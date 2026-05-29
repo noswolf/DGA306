@@ -1,8 +1,9 @@
 # DGA306: Data Analytics Techniques
 Leaning Materials for Government Workers.
 
-Lead Instructor: Dr. Sirasit Lochanachit
-Instructor: Asst Prof. Dr. Praphan Pavarangkoon
+**Lead Instructor**: Dr. Sirasit Lochanachit, KMITL
+
+**Instructor**: Asst Prof. Dr. Praphan Pavarangkoon, KMITL
 
 ## Course Outlines
 |Day| Lecture Slides| Interactive Guides |
