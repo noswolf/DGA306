@@ -5,6 +5,8 @@ Leaning Materials for Government Workers.
 
 **Instructor**: Asst Prof. Dr. Praphan Pavarangkoon, KMITL
 
+[Interactive Guides - Main Page](https://noswolf.github.io/DGA306/)
+
 ## Course Outlines
 |Day| Lecture Slides| Interactive Guides |
 |---|---|---|
