@@ -37,23 +37,58 @@
         }
 
         header {
-            background: var(--primary-blue);
+            background: #1e3a8a;
             color: white;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 32px 24px 64px 24px;
+            text-align: left;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .header-home {
+            position: absolute;
+            top: 50px;
+            right: 24px;
+            border: 2px solid rgba(255, 255, 255, .28);
+            background: rgba(255, 255, 255, .06);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-family: 'Sarabun', sans-serif;
+            font-size: .85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            z-index: 1;
+        }
+
+        .header-home:hover {
+            background: rgba(255, 255, 255, .14);
+            border-color: rgba(255, 255, 255, .45);
+            transform: translateY(-1px);
+        }
+
+        .header-home .ico {
+            font-size: 1rem;
+            line-height: 1;
         }
 
         header h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 26px;
-            margin-bottom: 5px;
+            font-size: 28px;
             font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.2;
         }
 
+
         header p {
-            font-size: 15px;
+            font-size: 18px;
             color: #bfdbfe;
+            font-weight: 500;
         }
 
         .container {
@@ -267,6 +302,7 @@
             cursor: pointer;
             transition: 0.2s;
             align-self: flex-start;
+            margin-bottom: 15px;
         }
 
         .btn-hint:hover {
@@ -370,7 +406,7 @@
 
         .catalog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -450,6 +486,17 @@
             background: var(--catalog-btn-hover);
         }
 
+        .three-pillars {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .three-pillars .step-box {
+            flex: 1;
+        }
+
         @media (max-width: 1100px) {
             .game-layout {
                 grid-template-columns: 1fr;
@@ -463,14 +510,65 @@
                 order: 1;
             }
         }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 24px 20px 24px 20px !important;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-home {
+                position: static;
+                align-self: flex-start;
+                margin-top: 5px;
+            }
+
+            .narrative-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tabs {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                white-space: nowrap;
+            }
+
+            .tab-btn {
+                flex: 0 0 auto;
+                white-space: nowrap;
+                padding: 12px 18px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .step-box {
+                width: 100%;
+            }
+            .three-pillars {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>DGA306: DATA STORYTELLING (DAY 5)</h1>
-        <p>Interactive Guide | การเล่าเรื่องด้วยข้อมูลและ Visualization</p>
+    <header class="bg-blue-900 text-white p-6 pt-8 pb-16 shadow-lg w-full">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold">DGA306: Data Storytelling (Day 5)</h1>
+                <p class="text-blue-200 mt-1 text-xl font-medium">Interactive Guide | การเล่าเรื่องด้วยข้อมูลและ Visualization</p>
+            </div>
+        </div>
+        <a class="header-home" href="index.html"><span class="ico">🏠</span>Back to home</a>
     </header>
 
     <div class="container">
@@ -488,6 +586,7 @@
                 <h2>Data Storytelling คืออะไร?</h2>
                 <p>การนำเสนอข้อมูลเชิงลึก (Insights) ผ่านการเล่าเรื่องที่น่าสนใจและเข้าใจง่าย ผสมผสาน 3
                     สิ่งเพื่อสร้างการเปลี่ยนแปลง (Change) ไม่ใช่แค่การแคปหน้าจอ Dashboard มาแปะในสไลด์</p>
+                <!-- ของเดิม:
                 <div style="display: flex; gap: 15px; margin-top: 15px; text-align: center;">
                     <div class="step-box" style="flex: 1;"><i class="fa-solid fa-database fa-2x"
                             style="color:var(--secondary-blue); margin-bottom:10px;"></i><br><strong>Data</strong><br><span
@@ -496,6 +595,18 @@
                             style="color:var(--primary-blue); margin-bottom:10px;"></i><br><strong>Visuals</strong><br><span
                             style="font-size:13px">แผนภาพที่ออกแบบให้กระจ่าง (Enlighten)</span></div>
                     <div class="step-box" style="flex: 1;"><i class="fa-solid fa-comment-dots fa-2x"
+                            style="color:var(--accent-orange); margin-bottom:10px;"></i><br><strong>Narrative</strong><br><span
+                            style="font-size:13px">โครงเรื่องที่โน้มน้าวใจ (Engage)</span></div>
+                </div>
+                -->
+                <div class="three-pillars">
+                    <div class="step-box"><i class="fa-solid fa-database fa-2x"
+                            style="color:var(--secondary-blue); margin-bottom:10px;"></i><br><strong>Data</strong><br><span
+                            style="font-size:13px">ข้อมูลที่ถูกต้องและวิเคราะห์มาอย่างดี</span></div>
+                    <div class="step-box"><i class="fa-solid fa-chart-line fa-2x"
+                            style="color:var(--primary-blue); margin-bottom:10px;"></i><br><strong>Visuals</strong><br><span
+                            style="font-size:13px">แผนภาพที่ออกแบบให้กระจ่าง (Enlighten)</span></div>
+                    <div class="step-box"><i class="fa-solid fa-comment-dots fa-2x"
                             style="color:var(--accent-orange); margin-bottom:10px;"></i><br><strong>Narrative</strong><br><span
                             style="font-size:13px">โครงเรื่องที่โน้มน้าวใจ (Engage)</span></div>
                 </div>
@@ -578,6 +689,7 @@
                             คะแนนรวม: <span id="lblScore">0</span>
                         </div>
                         <button id="btnNext" class="btn-next">ด่านถัดไป <i class="fa-solid fa-arrow-right"></i></button>
+                        <button id="btnReset" class="btn-next" style="display: none;" onclick="resetGame()"><i class="fa-solid fa-rotate-left"></i> เริ่มใหม่</button>
                     </div>
                 </div>
             </div>
@@ -591,15 +703,15 @@
                     placeholder="พิมพ์คำค้นหา (เช่น ฝนหลวง, ขยะ, สถิติ)...">
 
                 <div class="catalog-grid" id="catalogGrid">
-                    <div class="cat-item" data-search="ฝนหลวง กรมฝนหลวง แผนที่">
-                        <div class="cat-header"><i class="fa-solid fa-cloud-rain"></i> กรมฝนหลวงและการบินเกษตร</div>
+                    <div class="cat-item" data-search="เผา PM2.5 พื้นที่การเกษตร">
+                        <div class="cat-header"><i class="fa-solid fa-cloud-rain"></i> กรมส่งเสริมการเกษตร</div>
                         <div class="cat-body">
-                            <h4>รายงานผู้ขอรับบริการฝนหลวงรายจังหวัด</h4>
-                            <p>สรุปสถิติจำนวนผู้ขอรับบริการและพื้นที่การเกษตร พร้อมวิเคราะห์ความหนาแน่นรายภูมิภาค</p>
+                            <h4>รายงานเผาพื้นที่การเกษตร</h4>
+                            <p>วิเคราะห์แนวโน้มการเผาพื้นที่การเกษตร</p>
                             <div class="cat-tags"><span class="tag">Geo-Spatial</span><span class="tag">Agri-Tech</span>
                             </div>
                         </div>
-                        <div class="cat-footer"><a href="pdfs/royal_rain_report.pdf" target="_blank"
+                        <div class="cat-footer"><a href="https://drive.google.com/file/d/1I-nh55wSiebGIsCu2QqzCVNcoQn5Qe5A/view?usp=sharing" target="_blank"
                                 class="btn-pdf">เปิดเอกสาร PDF</a></div>
                     </div>
 
@@ -612,7 +724,7 @@
                             <div class="cat-tags"><span class="tag">Environment</span><span
                                     class="tag">Statistics</span></div>
                         </div>
-                        <div class="cat-footer"><a href="pdfs/waste_management.pdf" target="_blank"
+                        <div class="cat-footer"><a href="https://drive.google.com/file/d/1Xh4CwVj-zekLzIuFj0adA1PN2vtW5w_g/view?usp=sharing" target="_blank"
                                 class="btn-pdf">เปิดเอกสาร PDF</a></div>
                     </div>
                 </div>
@@ -665,6 +777,13 @@
             ctx.save(); ctx.translate(30, 240); ctx.rotate(-Math.PI / 2); ctx.fillText(yLabel, -50, 0); ctx.restore();
             ctx.fillText(xLabel, 400, 440);
         }
+
+        // กำหนดพิกัดและขนาดคงที่ของ Bubble ในด่าน 7 เพื่อป้องกันการสุ่มใหม่ทุกครั้งที่วาด (Flickering)
+        const staticBubbles = Array.from({ length: 25 }, () => ({
+            offsetLon: (Math.random() - 0.5) * 1.5,
+            offsetLat: (Math.random() - 0.5) * 1.5,
+            size: 8 + Math.random() * 12
+        }));
 
         const levels = [
             {
@@ -904,7 +1023,8 @@
                 title: "ด่าน 7: การแสดงผลบนแผนที่ (Bubble Map Overplotting)",
                 prompt: "สังเกตว่าพื้นที่ที่มีจุดข้อมูลหนาแน่นทำให้การอ่านแผนที่ยากขึ้นอย่างไร",
                 hint: "ลองดูว่าบริเวณไหนอ่านจำนวนและตำแหน่งจริงได้ไม่ชัด เพราะจุดซ้อนกันมากเกินไป",
-                checkHit: (x, y) => true,
+                // checkHit: (x, y) => true,
+                checkHit: (x, y) => Math.hypot(x - 355, y - 312) <= 72,
                 reference: {
                     label: "แหล่ง GeoJSON: SimpleMaps – Thailand Provinces (Admin 1)",
                     url: "https://simplemaps.com/gis/country/th#admin1"
@@ -978,12 +1098,18 @@
 
                         const clusterLon = 100.5;
                         const clusterLat = 13.7;
+                        /* ของเดิมสุ่มพิกัดทำให้ภาพกะพริบ (Flickering):
                         for (let i = 0; i < 25; i++) {
                             let offsetLon = (Math.random() - 0.5) * 1.5;
                             let offsetLat = (Math.random() - 0.5) * 1.5;
                             let size = 8 + Math.random() * 12;
                             bubble(clusterLon + offsetLon, clusterLat + offsetLat, size, "rgba(59, 130, 246, 0.85)");
                         }
+                        */
+                        // ของใหม่: ใช้ค่าคงที่ที่สุ่มไว้ตั้งแต่เริ่มโหลดหน้าเว็บเพื่อหลีกเลี่ยงการ Flickering
+                        staticBubbles.forEach(b => {
+                            bubble(clusterLon + b.offsetLon, clusterLat + b.offsetLat, b.size, "rgba(59, 130, 246, 0.85)");
+                        });
 
                         ctx.fillStyle = "#475569";
                         ctx.font = "13px Sarabun";
@@ -1017,30 +1143,36 @@
         ];
 
         function initGame() {
-            if (currentLvl >= levels.length) {
-            document.getElementById('levelTitle').innerText = "🎉 ยินดีด้วย! คุณผ่านการทดสอบทั้งหมดแล้ว";
-            document.getElementById('levelPrompt').innerText = "คุณมีความเข้าใจในหลักการ Data Visualization ที่ถูกต้อง";
-            document.getElementById('btnHint').style.display = 'none';
-            document.getElementById('statusBox').style.display = 'none';
-            document.getElementById('levelReference').style.display = 'none';
-            document.getElementById('btnNext').style.display = 'none';
-            document.getElementById('lblLevel').innerText = levels.length;
+            ctx.textAlign = "left";
+            ctx.textBaseline = "alphabetic";
 
-            ctx.fillStyle = "#ffffff"; 
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#1e3a8a"; 
-            ctx.font = "bold 30px Sarabun"; 
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText("จบกิจกรรม Spot the Flaw", canvas.width / 2, canvas.height / 2);
-            return;
-        }
+            if (currentLvl >= levels.length) {
+                document.getElementById('levelTitle').innerText = "🎉 ยินดีด้วย! คุณผ่านการทดสอบทั้งหมดแล้ว";
+                document.getElementById('levelPrompt').innerText = "คุณมีความเข้าใจในหลักการ Data Visualization ที่ถูกต้อง";
+                document.getElementById('btnHint').style.display = 'none';
+                document.getElementById('statusBox').style.display = 'none';
+                document.getElementById('levelReference').style.display = 'none';
+                document.getElementById('btnNext').style.display = 'none';
+                document.getElementById('lblLevel').innerText = levels.length;
+                document.getElementById('btnReset').style.display = 'block';
+
+                ctx.fillStyle = "#ffffff"; 
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "#1e3a8a"; 
+                ctx.font = "bold 30px Sarabun"; 
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText("จบกิจกรรม Spot the Flaw", canvas.width / 2, canvas.height / 2);
+                return;
+            }
 
             const lvl = levels[currentLvl];
             document.getElementById('lblLevel').innerText = currentLvl + 1;
             document.getElementById('levelTitle').innerText = lvl.title;
             document.getElementById('levelPrompt').innerText = lvl.prompt;
 
+            document.getElementById('btnHint').style.display = '';
+            document.getElementById('btnReset').style.display = 'none';
             document.getElementById('statusBox').style.display = 'none';
             document.getElementById('btnNext').style.display = 'none';
             gameSolved = false;
@@ -1103,6 +1235,13 @@
         document.getElementById('btnNext').addEventListener('click', () => {
             currentLvl++; initGame();
         });
+
+        function resetGame() {
+            currentLvl = 0;
+            score = 0;
+            document.getElementById('lblScore').innerText = score;
+            initGame();
+        }
 
         initGame();
     </script>
