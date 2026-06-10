@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,13 +39,14 @@
             background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             transition: 0.2s ease;
+            min-height: 80px;
         }
 
         .card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
         }
 
         .card a {
@@ -66,68 +68,90 @@
             color: #999;
             font-size: 13px;
         }
+
+
+        a {
+            text-decoration: none;
+            color: #1a73e8;
+        }
+
+        h3 {
+            margin: 0;
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>DGA306 Course Guides</h1>
+        <h1>DGA306 Course Guides</h1>
 
-    <p>
-        Welcome to the DGA306 documentation and HTML guides.
-    </p>
+        <p>
+            Welcome to the DGA306 documentation and HTML guides.
+        </p>
 
-    <div class="grid">
+        <div class="grid">
+            <a href="day0.html">
+                <div class="card">
+                    <h3>Day 0</h3>
+                    <div class="desc">
+                        Programming Fundamentals
+                    </div>
+                </div>
+            </a>
+            <a href="day1.html">
+                <div class="card">
+                    <h3>Day 1</h3>
+                    <div class="desc">
+                        Python and Data Exploration
+                    </div>
+                </div>
+            </a>
+            <a href="day2.html">
+                <div class="card">
+                    <h3>Day 2</h3>
+                    <div class="desc">
+                        Introduction to Data Warehouse
+                    </div>
+                </div>
+            </a>
 
-        <div class="card">
-            <a href="day0.html">Day 0</a>
-            <div class="desc">
-                Programming Fundamentals
-            </div>
+            <a href="day3.html">
+                <div class="card">
+                    <h3>Day 3</h3>
+                    <div class="desc">
+                        Data Warehouse and Data Visualization
+                    </div>
+                </div>
+            </a>
+
+            <a href="day4.html">
+                <div class="card">
+                    <h3>Day 4</h3>
+                    <div class="desc">
+                        Data Analytics with Basic Machine Learning
+                    </div>
+                </div>
+            </a>
+
+            <a href="day5.html">
+                <div class="card">
+                    <h3>Day 5</h3>
+                    <div class="desc">
+                        Data Storytelling
+                    </div>
+                </div>
+            </a>
+            
         </div>
 
-        <div class="card">
-            <a href="day1.html">Day 1</a>
-            <div class="desc">
-                Python and Data Exploration
-            </div>
-        </div>
+        <footer>
+            DGA306 • Hosted with GitHub Pages
+        </footer>
 
-        <div class="card">
-            <a href="day2.html">Day 2</a>
-            <div class="desc">
-                Introduction to Data Warehouse
-            </div>
-        </div>
-
-        <div class="card">
-            <a href="day3.html">Day 3</a>
-            <div class="desc">
-                Data Warehouse and Data Visualization
-            </div>
-        </div>
-
-        <div class="card">
-            <a href="day4.html">Day 4</a>
-            <div class="desc">
-                Data Analytics with Basic Machine Learning 
-            </div>
-        </div>
-
-        <div class="card">
-            <a href="day5.html">Day 5</a>
-            <div class="desc">
-                Data Storytelling
-            </div>
-        </div>
     </div>
 
-    <footer>
-        DGA306 • Hosted with GitHub Pages
-    </footer>
-
-</div>
-
 </body>
+
 </html>
