@@ -7,6 +7,10 @@
   <title>DGA306: Data Analytics Techniques (Day 2)</title>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    html {
+      font-size: 18px;
+    }
+
     :root {
       --p: #14297a;
       --ph: #1b37a0;
@@ -86,6 +90,7 @@
       font-weight: 700;
       margin-bottom: 4px;
       line-height: 1.2;
+      font-size: 28px;
     }
 
     header p {
@@ -96,10 +101,9 @@
 
     /* TABS */
     .tnav {
-      background: #fff;
+      background: var(--p);
       display: flex;
       overflow-x: auto;
-      border-bottom: 2px solid var(--bd);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -114,12 +118,12 @@
 
     .tbtn {
       font-family: 'Sarabun', sans-serif;
-      font-size: 13.5px;
-      font-weight: 500;
+      font-size: .9rem;
+      font-weight: 600;
       padding: 13px 15px;
       border: none;
       background: none;
-      color: var(--tm);
+      color: rgba(255, 255, 255, .55);
       cursor: pointer;
       white-space: nowrap;
       border-bottom: 3px solid transparent;
@@ -128,12 +132,12 @@
     }
 
     .tbtn:hover {
-      color: var(--p);
+      color: #fff;
     }
 
     .tbtn.active {
-      color: var(--p);
-      border-bottom-color: var(--p);
+      color: #fff;
+      border-bottom-color: var(--acc);
       font-weight: 700;
     }
 

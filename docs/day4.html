@@ -191,7 +191,6 @@
             overflow-x: auto;
             text-align: center;
         }
-
     </style>
 </head>
 
@@ -209,27 +208,28 @@
     </header>
     
 
-    <nav class="bg-white border-b sticky top-0 z-10 shadow-sm text-base md:text-lg w-full">
-        <div class="max-w-7xl mx-auto flex flex-nowrap tab-bar">
+    <nav class="tabs">
+        <div class="max-w-7xl mx-auto flex flex-nowrap tab-bar px-8">
             <button onclick="openTab(event, 'ml-basics')"
-                class="tab-link px-5 py-4 font-semibold text-blue-900 border-b-2 border-blue-600 active bg-blue-50">
+                class="tab-link px-5 py-4 font-semibold text-white border-b-[3px] border-amber-500 active">
                 <i class="fas fa-graduation-cap mr-2"></i>ML Basics
             </button>
             <button onclick="openTab(event, 'regression')"
-                class="tab-link px-5 py-4 font-semibold text-gray-500 hover:text-blue-600 transition border-b-2 border-transparent">
+                class="tab-link px-5 py-4 font-semibold text-white/55 hover:text-white transition border-b-[3px] border-transparent">
                 <i class="fas fa-chart-line mr-2"></i>Linear Regression
             </button>
             <button onclick="openTab(event, 'classification')"
-                class="tab-link px-5 py-4 font-semibold text-gray-500 hover:text-blue-600 transition border-b-2 border-transparent">
+                class="tab-link px-5 py-4 font-semibold text-white/55 hover:text-white transition border-b-[3px] border-transparent">
                 <i class="fas fa-tags mr-2"></i>Logistic Regression
             </button>
             <button onclick="openTab(event, 'reg-metrics')"
-                class="tab-link px-5 py-4 font-semibold text-gray-500 hover:text-blue-600 transition border-b-2 border-transparent">
+                class="tab-link px-5 py-4 font-semibold text-white/55 hover:text-white transition border-b-[3px] border-transparent">
                 <i class="fas fa-microscope mr-2"></i>Regression Metrics
             </button>
             <button onclick="openTab(event, 'confusion')"
-                class="tab-link px-5 py-4 font-semibold text-gray-500 hover:text-blue-600 transition border-b-2 border-transparent">
+                class="tab-link px-5 py-4 font-semibold text-white/55 hover:text-white transition border-b-[3px] border-transparent">
                 <i class="fas fa-table mr-2"></i>Confusion Matrix & F1
+            </button>
             <button onclick="openTab(event, 'pca-kmeans')"
                 class="tab-link px-5 py-4 font-semibold text-white/55 hover:text-white transition border-b-[3px] border-transparent">
                 <i class="fas fa-shapes mr-2"></i>PCA &amp; K-Means
@@ -856,12 +856,12 @@
             }
             tabLinks = document.getElementsByClassName("tab-link");
             for (i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("text-blue-900", "border-blue-600", "active", "bg-blue-50");
-                tabLinks[i].classList.add("text-gray-500", "border-transparent");
+                tabLinks[i].classList.remove("text-white", "border-amber-500", "active");
+                tabLinks[i].classList.add("text-white/55", "border-transparent");
             }
             document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("text-blue-900", "border-blue-600", "active", "bg-blue-50");
-            evt.currentTarget.classList.remove("text-gray-500", "border-transparent");
+            evt.currentTarget.classList.add("text-white", "border-amber-500", "active");
+            evt.currentTarget.classList.remove("text-white/55", "border-transparent");
 
             if (tabName === 'regression') initRegression();
             if (tabName === 'classification') initClassification();
