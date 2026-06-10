@@ -8,10 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <style>
-    html {
-      font-size: 18px;
-    }
-
     :root {
       --bd: #1b3a8f;
       --bm: #2b52c8;
@@ -154,7 +150,7 @@
       color: rgba(255, 255, 255, .55);
       padding: 14px 16px;
       font-family: 'Sarabun', sans-serif;
-      font-size: .9rem;
+      font-size: .85rem;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
@@ -1386,7 +1382,6 @@
     <a class="header-home" href="index.html"><span class="ico">🏠</span>Back to home</a>
   </header>
 
-  <!-- NAV -->
   <div class="tn">
     <button class="tb on" onclick="sw(0)">🔤 String</button>
     <button class="tb" onclick="sw(1)">📋 Data Types</button>
@@ -1396,6 +1391,7 @@
     <button class="tb" onclick="sw(5)">🏭 Class &amp; Object</button>
     <button class="tb" onclick="sw(6)">🌍 Global/Local</button>
     <button class="tb" onclick="sw(7)">📊 ข้อมูลและกราฟ</button>
+    <button class="tb" onclick="sw(8)">🔬 PCA &amp; K-Means</button>
   </div>
 
   <div class="ct">
@@ -2132,6 +2128,73 @@
           </div>
         </div>
       </div>
+
+      <!-- ===== TAB 8: PCA & KMEANS ===== -->
+      <div class="tp" id="t8">
+        <div class="card">
+          <div class="card-t">🔬 PCA — การลดมิติข้อมูล</div>
+          <div class="card-s">PCA ช่วย "บีบ" ข้อมูลหลาย dimension ให้เหลือน้อยมิติ แต่ยังรักษารูปแบบข้อมูลไว้</div>
+          <div class="hbox b">📌 <strong>Principal Component Analysis (PCA)</strong> เปลี่ยนแกนของข้อมูลให้ PC1 เก็บ
+            "ความแปรปรวน" ไว้มากที่สุด — เหมือนหาทิศทางที่ข้อมูล "กระจาย" มากที่สุด</div>
+          <div class="canvas-wrap">
+            <canvas id="pca-canvas" width="480" height="320"></canvas>
+          </div>
+          <div class="pca-controls">
+            <button class="btn am" onclick="animatePCA()">▶️ แสดง PCA</button>
+            <button class="btn out" onclick="resetPCA()">🔄 รีเซ็ต</button>
+            <span id="pca-info" style="font-size:.85rem;color:var(--tl);"></span>
+          </div>
+          <div class="g2" style="margin-top:16px;">
+            <div style="background:#f0fdf4;border-radius:10px;padding:16px;">
+              <div style="font-weight:700;color:#166534;margin-bottom:8px;">✅ ใช้ PCA เมื่อ...</div>
+              <div style="font-size:.85rem;line-height:1.7;">• มีตัวแปรเยอะ (10+ features)<br>• ต้องการ visualize ใน
+                2D/3D<br>• ตัวแปรมี multicollinearity<br>• ก่อนทำ clustering</div>
+            </div>
+            <div style="background:#fff8e1;border-radius:10px;padding:16px;">
+              <div style="font-weight:700;color:#92400e;margin-bottom:8px;">⚠️ ข้อควรระวัง</div>
+              <div style="font-size:.85rem;line-height:1.7;">• ต้อง standardize ข้อมูลก่อน<br>• PC ไม่มีความหมาย
+                "ตรงๆ"<br>• สูญเสียข้อมูลบางส่วนเสมอ<br>• ดู explained variance ratio</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-t">🎯 K-Means Clustering</div>
+          <div class="card-s">K-Means แบ่งข้อมูลออกเป็น k กลุ่ม โดยจัดแต่ละจุดให้อยู่ในกลุ่มที่ centroid ใกล้ที่สุด
+          </div>
+          <div class="hbox p">📌 <strong>K-Means</strong> เลือก centroid แบบสุ่ม → กำหนดกลุ่มให้แต่ละจุด → ย้าย centroid
+            → ทำซ้ำจนกว่าจะไม่เปลี่ยน</div>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
+            <span style="font-weight:600;font-size:.9rem;">จำนวนกลุ่ม k =</span>
+            <input type="range" id="km-k" min="2" max="5" value="3"
+              oninput="document.getElementById('km-k-val').textContent=this.value;initKMeans();" style="width:120px;">
+            <span id="km-k-val" style="font-size:1.1rem;font-weight:800;color:var(--bm);min-width:20px;">3</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="km-canvas" width="480" height="320"></canvas>
+          </div>
+          <div class="km-controls">
+            <button class="btn am" onclick="stepKMeans()">➡️ ขั้นถัดไป</button>
+            <button class="btn out" onclick="initKMeans()">🔄 สุ่มใหม่</button>
+            <span id="km-step-info" style="font-size:.85rem;color:var(--tl);">กด ➡️ เพื่อเริ่ม</span>
+          </div>
+          <div class="km-legend" id="km-legend"></div>
+          <div class="g2" style="margin-top:16px;">
+            <div style="background:#f5f3ff;border-radius:10px;padding:16px;">
+              <div style="font-weight:700;color:var(--pu);margin-bottom:8px;">🔄 ขั้นตอน K-Means</div>
+              <div style="font-size:.82rem;line-height:1.9;">1️⃣ สุ่มเลือก k centroids<br>2️⃣ assign แต่ละ point ให้
+                centroid ใกล้ที่สุด<br>3️⃣ คำนวณ centroid ใหม่ (mean ของ cluster)<br>4️⃣ วนซ้ำ 2-3 จนไม่มีการเปลี่ยน
+              </div>
+            </div>
+            <div style="background:#f0fdf4;border-radius:10px;padding:16px;">
+              <div style="font-weight:700;color:#166534;margin-bottom:8px;">📊 Elbow Method</div>
+              <div style="font-size:.82rem;line-height:1.7;">หา k ที่เหมาะสมโดย: plot กราฟ k vs WCSS (within-cluster sum
+                of squares) แล้วหาจุดที่กราฟ "หัก" คล้ายข้อศอก — นั่นคือ k ที่ดีที่สุด</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div><!-- /ct -->
 
     <script>
